@@ -1,0 +1,8 @@
+{
+  "name": "MVP Lab - AI Venture Studio",
+  "description": "A high-performance platform for building, launching, and investing in AI-powered ventures, featuring a comprehensive dashboard, investment portal, and secure ecosystem wallet.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
