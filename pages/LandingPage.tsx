@@ -434,47 +434,6 @@ const LandingPage: React.FC = () => {
         </section>
 
 
-        {/* Team Section */}
-        <section className="py-24 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-purple/5 rounded-full blur-[100px] pointer-events-none"></div>
-          <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <p className="text-secondary font-black text-[10px] uppercase tracking-[0.3em] mb-4">The Architects</p>
-            <h2 className="text-4xl md:text-5xl font-black mb-16 tracking-tighter">Built by Visionaries</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { name: "Paul Nwosu", role: "Executive Director, MVP Labs", img: "/team/paul_nwosu.png", bio: "Leading strategic growth and ecosystem expansion across Africa." },
-                { name: "Sarah Jenkins", role: "Head of Operations", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80", bio: "Ex-Google Ops lead. Scaling venture infrastructure for high-growth startups." },
-                { name: "Michael Chen", role: "Lead AI Architect", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80", bio: "PhD in Neural Networks. Designing the core generative agents for the ecosystem." },
-                { name: "Amara Diop", role: "VP of Product", img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80", bio: "Product visionary turning complex AI capabilities into intuitive user experiences." }
-              ].map((member, i) => (
-                <div key={i} className="glass rounded-[2rem] border-white/5 hover:border-primary/40 transition-all group text-left relative overflow-hidden flex flex-col h-full bg-[#0A0A0B]">
-                  <div className="h-80 w-full overflow-hidden relative">
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B] via-transparent to-transparent opacity-20"></div>
-                    <img src={member.img} alt={member.name} className="w-full h-full object-cover object-top scale-100 group-hover:scale-105 transition-all duration-700" />
-                  </div>
-                  <div className="p-6 flex flex-col flex-1 border-t border-white/5 relative z-20">
-                    <div className="mb-4">
-                      <h3 className="text-lg font-bold mb-1 text-white group-hover:text-primary transition-colors">{member.name}</h3>
-                      <p className="text-[9px] uppercase font-black tracking-widest text-slate-500">{member.role}</p>
-                    </div>
-                    <p className="text-slate-400 text-xs leading-relaxed opacity-80 mb-6 flex-1">{member.bio}</p>
-
-                    <div className="flex gap-3">
-                      <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white cursor-pointer transition-all text-slate-500">
-                        <span className="text-[10px] font-bold">IN</span>
-                      </span>
-                      <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white cursor-pointer transition-all text-slate-500">
-                        <span className="text-[10px] font-bold">X</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Venture Insights - Blog Section */}
         <section className="px-6 py-40">
           <div className="max-w-7xl mx-auto">
@@ -674,7 +633,6 @@ const LandingPage: React.FC = () => {
             </div>
           </div>
         </section>
-
         {/* Call to Action */}
         <section className="px-6 py-60 text-center relative">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-primary/10 blur-[150px] rounded-full"></div>
@@ -717,6 +675,14 @@ const LandingPage: React.FC = () => {
               <li><a href="#" className="hover:text-primary transition-colors">Investment Pool</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Marketplace</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Creator Academy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white mb-8">Company</h4>
+            <ul className="space-y-4 text-sm font-bold text-slate-500">
+              <li><button onClick={() => navigate('/team')} className="hover:text-primary transition-colors">Team</button></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
             </ul>
           </div>
           <div>

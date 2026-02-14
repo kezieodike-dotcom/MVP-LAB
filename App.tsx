@@ -9,6 +9,7 @@ import Marketplace from './pages/Marketplace';
 import CreatorEconomy from './pages/CreatorEconomy';
 import Academy from './pages/Academy';
 import AdminPanel from './pages/AdminPanel';
+import Team from './pages/Team';
 
 const App: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         <Route path="/creator" element={<CreatorEconomy />} />
         <Route path="/academy" element={<Academy />} />
         <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/team" element={<Team />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>
