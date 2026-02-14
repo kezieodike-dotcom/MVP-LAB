@@ -7,6 +7,7 @@ const LandingPage: React.FC = () => {
   const navigate = useNavigate();
   const [idea, setIdea] = useState('');
   const [report, setReport] = useState('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleFeasibilityCheck = async () => {
@@ -24,206 +25,322 @@ const LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-background-dark text-slate-100 font-sans overflow-x-hidden">
+    <div className="bg-[#050505] text-slate-100 font-sans overflow-x-hidden min-h-screen">
+      {/* Background Glows */}
+      <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/5 blur-[120px] rounded-full"></div>
+      </div>
+
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5 px-6 py-4 flex justify-between items-center backdrop-blur-md">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gradient-to-tr from-primary to-accent-purple rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold">M</span>
+      <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5 px-6 py-4 flex justify-between items-center backdrop-blur-xl">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-white rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20 overflow-hidden p-1">
+            <img src="/logo.png" alt="MVP Lab Logo" className="w-full h-full object-contain" />
           </div>
-          <span className="font-bold text-xl tracking-tight">MVP Lab</span>
+          <span className="font-bold text-2xl tracking-tighter">MVP LAB</span>
         </div>
-        <div className="hidden md:flex gap-8 text-sm font-medium">
-          <a href="#features" className="hover:text-primary transition-colors">Features</a>
-          <a href="#how-it-works" className="hover:text-primary transition-colors">Process</a>
-          <a href="#pricing" className="hover:text-primary transition-colors">Pricing</a>
+
+        {/* Desktop Nav */}
+        <div className="hidden lg:flex gap-10 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+          <a href="#ecosystem" className="hover:text-primary transition-colors">Ecosystem</a>
+          <a href="#feasibility" className="hover:text-primary transition-colors">AI Analysis</a>
+          <a href="#invest" className="hover:text-primary transition-colors">Invest</a>
+          <button onClick={() => navigate('/admin')} className="hover:text-red-400 transition-colors">Control</button>
         </div>
-        <button 
-          onClick={() => navigate('/dashboard')}
-          className="bg-primary hover:bg-primary/90 px-6 py-2 rounded-full text-sm font-bold transition-all"
-        >
-          Enter Platform
-        </button>
+
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => navigate('/dashboard')}
+            className="hidden sm:block bg-primary hover:bg-primary/90 px-8 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all shadow-xl shadow-primary/20"
+          >
+            Enter Hub
+          </button>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10"
+          >
+            <span className="material-symbols-outlined">{mobileMenuOpen ? 'close' : 'menu'}</span>
+          </button>
+        </div>
       </nav>
 
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-black/90 backdrop-blur-xl pt-24 px-6 lg:hidden">
+          <div className="flex flex-col gap-8 text-2xl font-black uppercase tracking-tighter">
+            <a href="#ecosystem" onClick={() => setMobileMenuOpen(false)} className="hover:text-primary transition-colors">Ecosystem</a>
+            <a href="#feasibility" onClick={() => setMobileMenuOpen(false)} className="hover:text-primary transition-colors">AI Analysis</a>
+            <a href="#invest" onClick={() => setMobileMenuOpen(false)} className="hover:text-primary transition-colors">Invest</a>
+            <button onClick={() => { navigate('/admin'); setMobileMenuOpen(false); }} className="text-left hover:text-red-400 transition-colors">Control Panel</button>
+            <button
+              onClick={() => navigate('/dashboard')}
+              className="mt-8 bg-primary text-white py-4 rounded-2xl text-sm font-bold uppercase tracking-widest shadow-xl shadow-primary/20"
+            >
+              Enter Hub
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
-      <main className="pt-32 pb-12">
-        <section className="relative px-6 py-12 text-center hero-glow">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold mb-6">
+      <main className="relative z-10 pt-48">
+        <section className="px-6 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-widest text-primary mb-8 shadow-inner">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            AI-Powered Venture Studio
+            Unified AI Venture Ecosystem
           </div>
-          <h1 className="text-4xl md:text-7xl font-extrabold leading-tight mb-6 gradient-text max-w-5xl mx-auto">
-            From Raw Ideas to Scalable Ventures <span className="text-white">— Instantly</span>
+          <h1 className="text-5xl md:text-8xl font-black leading-[0.9] mb-8 gradient-text max-w-6xl mx-auto tracking-tighter">
+            BUILD. LAUNCH.<br />INVEST. <span className="text-white">SCALE.</span>
           </h1>
-          <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-            The unified ecosystem to Build, Launch, and Invest in AI-powered applications. Powered by advanced neural networks.
+          <p className="text-slate-500 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
+            The master architecture to transform raw ideas into profitable AI applications within a single high-yield ecosystem.
           </p>
-          <div className="flex flex-col gap-4 sm:flex-row justify-center px-4">
-            <button 
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-24">
+            <button
               onClick={() => navigate('/dashboard')}
-              className="bg-primary hover:bg-primary/90 text-white font-bold py-4 px-10 rounded-full transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto bg-white text-black font-black uppercase tracking-widest py-5 px-12 rounded-2xl transition-all shadow-2xl hover:scale-105 active:scale-95 text-xs"
             >
               Start Building
-              <span className="material-symbols-outlined text-sm">arrow_forward</span>
             </button>
-            <button className="bg-white/5 hover:bg-white/10 text-white font-semibold py-4 px-10 rounded-full border border-white/10 transition-all">
-              Explore Investments
+            <button
+              onClick={() => navigate('/invest')}
+              className="w-full sm:w-auto glass hover:bg-white/10 text-white font-black uppercase tracking-widest py-5 px-12 rounded-2xl border border-white/10 transition-all text-xs"
+            >
+              Explore Ventures
             </button>
           </div>
 
-          <div className="mt-20 relative px-4">
-            <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-primary/10 blur-[120px] rounded-full -z-10"></div>
-            <div className="glass rounded-[2rem] p-4 mx-auto max-w-5xl ios-shadow border-white/10">
-              <img 
-                alt="Dashboard visualization" 
-                className="rounded-2xl w-full" 
-                src="https://picsum.photos/seed/dashboard/1200/600"
-              />
+          <div className="relative max-w-6xl mx-auto px-4 group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-[3rem] blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+            <div className="relative glass rounded-[3rem] p-4 border-white/10 backdrop-blur-2xl">
+              <div className="rounded-[2.5rem] overflow-hidden">
+                <img
+                  alt="Ecosystem Master Interface"
+                  className="w-full grayscale-[0.5] hover:grayscale-0 transition-all duration-1000"
+                  src="https://picsum.photos/seed/mvplab/1600/800"
+                />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* AI Feasibility Checker Section */}
-        <section className="px-6 py-24 max-w-4xl mx-auto text-center">
-          <p className="text-primary font-bold text-xs uppercase tracking-widest mb-2">Instant Insight</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-8">Got an Idea? Check Feasibility</h2>
-          <div className="glass p-8 rounded-3xl border-white/10">
-            <textarea
-              value={idea}
-              onChange={(e) => setIdea(e.target.value)}
-              placeholder="Describe your venture idea (e.g., An AI that automates personalized financial coaching...)"
-              className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-slate-100 placeholder-slate-500 focus:ring-primary focus:border-primary mb-6 min-h-[120px]"
-            />
-            <button
-              onClick={handleFeasibilityCheck}
-              disabled={loading || !idea}
-              className="w-full bg-gradient-to-r from-primary to-accent-purple py-4 rounded-2xl font-bold text-white shadow-xl shadow-primary/20 hover:scale-[1.01] transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading ? 'Analyzing with Gemini...' : 'Generate Feasibility Report'}
-            </button>
-
-            {report && (
-              <div className="mt-8 text-left bg-black/40 p-6 rounded-2xl border border-white/5 whitespace-pre-wrap">
-                <h4 className="text-primary font-bold mb-2">AI Analysis Report:</h4>
-                <div className="text-slate-300 text-sm leading-relaxed">{report}</div>
+        {/* AI Feasibility Checker */}
+        <section id="feasibility" className="px-6 py-40 max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="text-primary font-black text-[10px] uppercase tracking-[0.3em] mb-4">Neural Analysis</p>
+              <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tighter">Instant Venture Validation</h2>
+              <p className="text-slate-500 text-lg mb-8 leading-relaxed">
+                Our proprietary AI engine analyzes your concept against current market data, tech feasibility, and ROI potential in seconds.
+              </p>
+              <div className="space-y-4">
+                {['Real-time Competitive Analysis', 'Tech Stack Recommendation', 'Projected Valuation Tiers'].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <span className="material-symbols-outlined text-secondary text-xl">verified</span>
+                    <span className="text-sm font-bold text-slate-300">{item}</span>
+                  </div>
+                ))}
               </div>
-            )}
+            </div>
+            <div className="glass p-10 rounded-[3rem] border-white/10 shadow-2xl">
+              <textarea
+                value={idea}
+                onChange={(e) => setIdea(e.target.value)}
+                placeholder="Briefly describe your AI idea..."
+                className="w-full bg-black/40 border border-white/10 rounded-3xl p-6 text-slate-100 placeholder-slate-600 focus:ring-2 focus:ring-primary focus:border-transparent mb-6 min-h-[160px] text-sm font-medium"
+              />
+              <button
+                onClick={handleFeasibilityCheck}
+                disabled={loading || !idea}
+                className="w-full bg-gradient-to-r from-primary to-accent-purple py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest text-white shadow-xl shadow-primary/30 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50"
+              >
+                {loading ? 'Initializing Neural Link...' : 'Generate Full Report'}
+              </button>
+
+              {report && (
+                <div className="mt-8 bg-white/5 p-6 rounded-2xl border border-white/5 animate-pulse-slow">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="w-2 h-2 rounded-full bg-primary"></span>
+                    <span className="text-[10px] font-black uppercase text-primary">Analysis Ready</span>
+                  </div>
+                  <div className="text-slate-300 text-xs leading-relaxed font-mono">{report}</div>
+                </div>
+              )}
+            </div>
           </div>
         </section>
 
         {/* Ecosystem Grid */}
-        <section id="features" className="px-6 py-24 bg-gradient-to-b from-transparent to-black/60">
-          <div className="max-w-6xl mx-auto mb-16 text-center md:text-left">
-            <p className="text-primary font-bold text-xs uppercase tracking-widest mb-2">The Ecosystem</p>
-            <h2 className="text-4xl font-bold">Unlocking Potential</h2>
-            <p className="text-slate-500 mt-4 max-w-xl">Core modules designed for rapid growth and seamless scalability from day one.</p>
-          </div>
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Build System", desc: "Automated deployment pipelines and boilerplate templates for AI SaaS.", icon: "terminal", color: "primary" },
-              { title: "AI Investment", desc: "Decentralized funding pool for validated concepts. Connect with VCs.", icon: "payments", color: "indigo-400" },
-              { title: "Marketplace", desc: "Buy, sell, or license pre-trained models and unique micro-SaaS apps.", icon: "storefront", color: "accent-purple" },
-              { title: "Academy", desc: "Master AI prompt engineering and venture building with world-class courses.", icon: "school", color: "emerald-400" }
-            ].map((feature, i) => (
-              <div key={i} className="glass p-8 rounded-3xl relative overflow-hidden group hover:bg-white/5 transition-all">
-                <div className={`absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity text-7xl text-${feature.color}`}>
-                  <span className="material-symbols-outlined !text-7xl">{feature.icon}</span>
+        <section id="ecosystem" className="px-6 py-40 border-t border-white/5">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-24 text-center">
+              <p className="text-primary font-black text-[10px] uppercase tracking-[0.3em] mb-4">The Infrastructure</p>
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">Unified Hub Control</h2>
+              <p className="text-slate-500 max-w-2xl mx-auto text-lg">Four mission-critical modules designed to accelerate every stage of the venture lifecycle.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[
+                { title: "Marketplace", desc: "Acquire validated AI ventures or co-invest in high-growth digital assets.", icon: "storefront", path: "/marketplace" },
+                { title: "Creator Portal", desc: "Monetize content engagement with automated revenue sharing via Smart Channels.", icon: "auto_awesome", path: "/creator" },
+                { title: "Academy", desc: "Master AI venture building with hands-on curriculum and neural certifications.", icon: "school", path: "/academy" },
+                { title: "Investment", desc: "Institutional-grade entry into early-stage AI nodes with transparent ROI tracking.", icon: "insights", path: "/invest" }
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  onClick={() => navigate(item.path)}
+                  className="glass p-12 rounded-[3.5rem] border-white/5 hover:border-primary/30 transition-all cursor-pointer group relative overflow-hidden"
+                >
+                  <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-[80px] group-hover:bg-primary/10 transition-all"></div>
+                  <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+                    <span className="material-symbols-outlined text-4xl">{item.icon}</span>
+                  </div>
+                  <h3 className="text-3xl font-black mb-4 tracking-tight">{item.title}</h3>
+                  <p className="text-slate-400 text-lg leading-relaxed mb-8">{item.desc}</p>
+                  <div className="flex items-center gap-2 text-primary font-black text-[10px] uppercase tracking-widest group-hover:gap-4 transition-all">
+                    Launch Module <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                  </div>
                 </div>
-                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-primary mb-6">
-                  <span className="material-symbols-outlined">{feature.icon}</span>
-                </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-6">{feature.desc}</p>
-                <a className="text-primary text-sm font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform" href="#">
-                  Learn more <span className="material-symbols-outlined text-xs">chevron_right</span>
-                </a>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section id="pricing" className="px-6 py-24">
-          <div className="text-center mb-16">
-            <p className="text-primary font-bold text-xs uppercase tracking-widest mb-2">Flexible Plans</p>
-            <h2 className="text-4xl font-bold">Choose Your Path</h2>
+
+        {/* Partners Section */}
+        <section className="py-24 border-t border-white/5 bg-white/[0.02] overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 text-center">
+            <p className="text-primary font-black text-[10px] uppercase tracking-[0.3em] mb-12">Trusted By Industry Leaders</p>
+
+            {/* Special Partner Card */}
+            <div className="mb-16 flex justify-center">
+              <div className="glass p-6 rounded-3xl border border-primary/20 relative group hover:scale-105 transition-transform duration-500 animate-float">
+                <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-3xl blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                <div className="relative flex items-center gap-6 bg-black/80 rounded-2xl px-8 py-4 backdrop-blur-xl">
+                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center p-2 overflow-hidden">
+                    <img src="/partners/africa_future_leaders.png" alt="Africa Future Leaders" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-orange-400 mb-1">Strategic Partner</p>
+                    <h3 className="text-xl font-bold text-white tracking-tight">Top 100 Africa Future Leaders</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-12 md:gap-24 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+              {['NVIDIA', 'OPENAI', 'POLYGON', 'AWS STARTUPS', 'Y COMBINATOR'].map((partner, i) => (
+                <div key={i} className="text-xl md:text-2xl font-black tracking-tighter text-white hover:text-primary transition-colors cursor-default">
+                  {partner}
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="glass p-10 rounded-[2.5rem] border-slate-800 hover:border-slate-700 transition-colors">
-              <h3 className="text-2xl font-bold mb-2">Creator</h3>
-              <p className="text-slate-400 text-sm mb-8">For solo founders and tinkers.</p>
-              <div className="flex items-baseline gap-1 mb-10">
-                <span className="text-5xl font-bold">$49</span>
-                <span className="text-slate-500">/month</span>
-              </div>
-              <ul className="space-y-4 mb-12">
-                {["AI Dashboard Access", "1 Active Project", "Community Support"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-slate-300">
-                    <span className="material-symbols-outlined text-primary text-xl">check_circle</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <button className="w-full py-4 rounded-2xl bg-white/5 border border-white/10 font-bold hover:bg-white/10 transition-all">Select Creator</button>
-            </div>
+        </section>
 
-            <div className="glass p-10 rounded-[2.5rem] border-primary bg-primary/5 relative scale-105 shadow-2xl shadow-primary/20">
-              <div className="absolute -top-4 right-10 bg-primary text-white text-[10px] font-extrabold px-4 py-1.5 rounded-full uppercase tracking-widest">Most Popular</div>
-              <h3 className="text-2xl font-bold mb-2">Investor</h3>
-              <p className="text-slate-300 text-sm mb-8">For venture scouts and angels.</p>
-              <div className="flex items-baseline gap-1 mb-10">
-                <span className="text-5xl font-bold">$299</span>
-                <span className="text-slate-400">/month</span>
-              </div>
-              <ul className="space-y-4 mb-12">
-                {["Priority Deal Flow", "Due Diligence AI Reports", "Direct Founder Messaging", "Co-investment Rights"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-white">
-                    <span className="material-symbols-outlined text-primary text-xl">check_circle</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <button className="w-full py-4 rounded-2xl bg-primary text-white font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">Select Investor</button>
-            </div>
 
-            <div className="glass p-10 rounded-[2.5rem] border-slate-800 hover:border-slate-700 transition-colors">
-              <h3 className="text-2xl font-bold mb-2">Enterprise</h3>
-              <p className="text-slate-400 text-sm mb-8">For custom development & labs.</p>
-              <div className="flex items-baseline gap-1 mb-10">
-                <span className="text-5xl font-bold">Custom</span>
-              </div>
-              <ul className="space-y-4 mb-12">
-                {["Dedicated Venture Team", "White-label Platform", "Private Marketplace"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-slate-300">
-                    <span className="material-symbols-outlined text-primary text-xl">check_circle</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <button className="w-full py-4 rounded-2xl bg-white/5 border border-white/10 font-bold hover:bg-white/10 transition-all">Contact Sales</button>
+        {/* Team Section */}
+        <section className="py-24 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-purple/5 rounded-full blur-[100px] pointer-events-none"></div>
+          <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <p className="text-secondary font-black text-[10px] uppercase tracking-[0.3em] mb-4">The Architects</p>
+            <h2 className="text-4xl md:text-5xl font-black mb-16 tracking-tighter">Built by Visionaries</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { name: "Paul Nwosu", role: "Executive Director, MVP Labs", img: "/team/paul_nwosu.png", bio: "Leading strategic growth and ecosystem expansion across Africa." },
+                { name: "Sarah Jenkins", role: "Head of Operations", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80", bio: "Ex-Google Ops lead. Scaling venture infrastructure for high-growth startups." },
+                { name: "Michael Chen", role: "Lead AI Architect", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80", bio: "PhD in Neural Networks. Designing the core generative agents for the ecosystem." },
+                { name: "Amara Diop", role: "VP of Product", img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=80", bio: "Product visionary turning complex AI capabilities into intuitive user experiences." }
+              ].map((member, i) => (
+                <div key={i} className="glass rounded-[2rem] border-white/5 hover:border-primary/40 transition-all group text-left relative overflow-hidden flex flex-col h-full bg-[#0A0A0B]">
+                  <div className="h-80 w-full overflow-hidden relative">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B] via-transparent to-transparent opacity-20"></div>
+                    <img src={member.img} alt={member.name} className="w-full h-full object-cover object-top scale-100 group-hover:scale-105 transition-all duration-700" />
+                  </div>
+                  <div className="p-6 flex flex-col flex-1 border-t border-white/5 relative z-20">
+                    <div className="mb-4">
+                      <h3 className="text-lg font-bold mb-1 text-white group-hover:text-primary transition-colors">{member.name}</h3>
+                      <p className="text-[9px] uppercase font-black tracking-widest text-slate-500">{member.role}</p>
+                    </div>
+                    <p className="text-slate-400 text-xs leading-relaxed opacity-80 mb-6 flex-1">{member.bio}</p>
+
+                    <div className="flex gap-3">
+                      <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white cursor-pointer transition-all text-slate-500">
+                        <span className="text-[10px] font-bold">IN</span>
+                      </span>
+                      <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white cursor-pointer transition-all text-slate-500">
+                        <span className="text-[10px] font-bold">X</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="px-6 py-60 text-center relative">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-primary/10 blur-[150px] rounded-full"></div>
+          <div className="relative z-10">
+            <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-12">READY TO<br /><span className="text-primary">DOMINATE?</span></h2>
+            <button
+              onClick={() => navigate('/dashboard')}
+              className="bg-primary text-white font-black uppercase tracking-widest py-6 px-16 rounded-3xl text-sm shadow-2xl shadow-primary/40 hover:scale-110 active:scale-95 transition-all"
+            >
+              Initialize Access
+            </button>
           </div>
         </section>
       </main>
 
-      <footer className="px-6 py-16 border-t border-white/5">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white text-xs font-bold">M</span>
+      <footer className="px-8 py-20 border-t border-white/5 bg-black/40 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="col-span-2">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 bg-white rounded-xl flex items-center justify-center overflow-hidden p-1">
+                <img src="/logo.png" alt="MVP Lab Logo" className="w-full h-full object-contain" />
+              </div>
+              <span className="font-bold text-xl tracking-tighter uppercase">MVP LAB</span>
             </div>
-            <span className="font-bold tracking-tight text-xl">MVP Lab</span>
+            <p className="text-slate-500 max-w-xs text-sm leading-relaxed mb-8">
+              The next-generation venture studio for AI-powered applications. Powered by neural networks and decentralized growth models.
+            </p>
+            <div className="flex gap-4">
+              {['Twitter', 'Discord', 'LinkedIn'].map(s => (
+                <a key={s} href="#" className="w-10 h-10 glass rounded-xl flex items-center justify-center text-slate-400 hover:text-white transition-colors">
+                  <span className="text-[10px] font-bold uppercase">{s[0]}</span>
+                </a>
+              ))}
+            </div>
           </div>
-          <div className="flex gap-10 text-slate-500 text-sm font-medium">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <a href="#" className="hover:text-white transition-colors">Cookies</a>
+          <div>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white mb-8">Ecosystem</h4>
+            <ul className="space-y-4 text-sm font-bold text-slate-500">
+              <li><a href="#" className="hover:text-primary transition-colors">Build System</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Investment Pool</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Marketplace</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Creator Academy</a></li>
+            </ul>
           </div>
-          <p className="text-slate-600 text-sm">© 2025 MVP Lab Ecosystem. All rights reserved.</p>
+          <div>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white mb-8">Legal</h4>
+            <ul className="space-y-4 text-sm font-bold text-slate-500">
+              <li><a href="#" className="hover:text-primary transition-colors">Risk Disclosure</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">KYC/AML Policy</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="mt-20 pt-8 border-t border-white/5 text-center text-[10px] font-bold text-slate-600 tracking-widest uppercase">
+          © 2025 MVP LAB CORE. SECURED BY POLYGON & ETHEREUM.
         </div>
       </footer>
     </div>

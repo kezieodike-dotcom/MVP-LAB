@@ -11,10 +11,10 @@ const BottomNav: React.FC<BottomNavProps> = ({ activeTab }) => {
 
   const navItems = [
     { id: 'home', icon: 'dashboard', label: 'Home', path: '/dashboard' },
-    { id: 'projects', icon: 'rocket_launch', label: 'Projects', path: '/invest' },
-    { id: 'wallet', icon: 'account_balance_wallet', label: 'Wallet', path: '/wallet' },
+    { id: 'marketplace', icon: 'storefront', label: 'Market', path: '/marketplace' },
     { id: 'invest', icon: 'insights', label: 'Invest', path: '/invest' },
-    { id: 'profile', icon: 'person', label: 'Profile', path: '#' },
+    { id: 'creator', icon: 'auto_awesome', label: 'Creator', path: '/creator' },
+    { id: 'wallet', icon: 'account_balance_wallet', label: 'Wallet', path: '/wallet' },
   ];
 
   return (
@@ -23,9 +23,8 @@ const BottomNav: React.FC<BottomNavProps> = ({ activeTab }) => {
         <button
           key={item.id}
           onClick={() => item.path !== '#' && navigate(item.path)}
-          className={`flex flex-col items-center gap-1 transition-colors ${
-            activeTab === item.id ? 'text-primary' : 'text-slate-500'
-          }`}
+          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === item.id ? 'text-primary' : 'text-slate-500'
+            }`}
         >
           <span className={`material-symbols-outlined ${activeTab === item.id ? 'fill-[1]' : ''}`}>
             {item.icon}

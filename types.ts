@@ -24,6 +24,32 @@ export interface Transaction {
 
 export enum UserRole {
   CLIENT = 'CLIENT',
+  DEVELOPER = 'DEVELOPER',
   INVESTOR = 'INVESTOR',
-  CREATOR = 'CREATOR'
+  CREATOR = 'CREATOR',
+  STUDENT = 'STUDENT',
+  ADMIN = 'ADMIN'
+}
+
+export interface MarketplaceApp {
+  id: string;
+  name: string;
+  description: string;
+  price: string;
+  valuation: string;
+  revenue: string;
+  status: 'live' | 'pending' | 'sold';
+  category: string;
+  img: string;
+}
+
+export interface AcademyCourse {
+  id: string;
+  title: string;
+  description: string;
+  students: number;
+  rating: number;
+  price: string;
+  instructor: string;
+  category: string;
 }
