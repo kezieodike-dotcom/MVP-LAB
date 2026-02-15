@@ -45,6 +45,7 @@ const LandingPage: React.FC = () => {
         <div className="hidden lg:flex gap-10 text-[10px] font-bold uppercase tracking-widest text-slate-400">
           <a href="#ecosystem" className="hover:text-primary transition-colors">Ecosystem</a>
           <a href="#feasibility" className="hover:text-primary transition-colors">AI Analysis</a>
+          <button onClick={() => navigate('/team')} className="hover:text-primary transition-colors uppercase">Team</button>
           <a href="#invest" className="hover:text-primary transition-colors">Invest</a>
           <button onClick={() => navigate('/admin')} className="hover:text-red-400 transition-colors">Control</button>
         </div>
@@ -680,7 +681,12 @@ const LandingPage: React.FC = () => {
           <div>
             <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white mb-8">Company</h4>
             <ul className="space-y-4 text-sm font-bold text-slate-500">
-              <li><button onClick={() => navigate('/team')} className="hover:text-primary transition-colors">Team</button></li>
+              <li>
+                <button onClick={() => navigate('/team')} className="hover:text-primary transition-colors flex items-center gap-2 w-full text-left group">
+                  <span className="material-symbols-outlined text-lg opacity-50 group-hover:opacity-100 transition-opacity">groups</span>
+                  Team
+                </button>
+              </li>
               <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
             </ul>
