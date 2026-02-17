@@ -1,21 +1,108 @@
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer base {
+  :root {
+    --transition: 200ms ease;
+  }
+}
 
 @layer utilities {
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-  
+
   @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+    0% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
   }
 
   .animate-pulse-slow {
     animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Transition Utility */
+  .transition-premium {
+    transition: all var(--transition);
+  }
+
+  /* Spacing Grid Utilities (for manual control when Tailwind isn't enough) */
+  .p-grid-1 {
+    padding: 8px;
+  }
+
+  .p-grid-2 {
+    padding: 16px;
+  }
+
+  .p-grid-3 {
+    padding: 24px;
+  }
+
+  .p-grid-4 {
+    padding: 32px;
+  }
+
+  .p-grid-5 {
+    padding: 40px;
+  }
+
+  .p-grid-6 {
+    padding: 48px;
+  }
+
+  .p-grid-8 {
+    padding: 64px;
+  }
+
+  .p-grid-10 {
+    padding: 80px;
+  }
+
+  .p-grid-15 {
+    padding: 120px;
+  }
+
+  .m-grid-1 {
+    margin: 8px;
+  }
+
+  .m-grid-2 {
+    margin: 16px;
+  }
+
+  .m-grid-3 {
+    margin: 24px;
+  }
+
+  .m-grid-4 {
+    margin: 32px;
+  }
+
+  .m-grid-5 {
+    margin: 40px;
+  }
+
+  .m-grid-6 {
+    margin: 48px;
+  }
+
+  .m-grid-8 {
+    margin: 64px;
+  }
+
+  .m-grid-10 {
+    margin: 80px;
+  }
+
+  .m-grid-15 {
+    margin: 120px;
   }
 }
 
@@ -23,6 +110,7 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
