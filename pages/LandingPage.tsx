@@ -39,7 +39,7 @@ const LandingPage: React.FC = () => {
             <div className="w-[40px] h-[40px] bg-white rounded-xl flex items-center justify-center overflow-hidden p-1 shadow-lg shadow-white/5 transition-transform group-hover:scale-110">
               <img src="/logo.png" alt="MVP Lab Logo" className="w-full h-full object-contain" />
             </div>
-            <span className="font-bold text-[20px] tracking-[-0.02em] uppercase">MVP LAB</span>
+            <span className="font-bold text-[20px] tracking-[-0.02em] uppercase">MVP LABS</span>
           </div>
 
           <div className="hidden lg:flex items-center gap-10">
@@ -65,8 +65,11 @@ const LandingPage: React.FC = () => {
             </button>
           </div>
 
-          <button className="lg:hidden text-white hover:text-primary transition-colors p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            <span className="material-symbols-outlined text-[32px]">{mobileMenuOpen ? 'close' : 'menu'}</span>
+          <button
+            className="lg:hidden w-[40px] h-[40px] flex items-center justify-center text-white hover:text-primary transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <span className="material-symbols-outlined text-[32px] leading-none">{mobileMenuOpen ? 'close' : 'menu'}</span>
           </button>
         </div>
       </nav>
@@ -649,7 +652,7 @@ const LandingPage: React.FC = () => {
               <div className="w-[40px] h-[40px] bg-white rounded-xl flex items-center justify-center overflow-hidden p-1 shadow-lg shadow-white/5">
                 <img src="/logo.png" alt="MVP Lab Logo" className="w-full h-full object-contain" />
               </div>
-              <span className="font-bold text-[24px] tracking-[-0.02em] uppercase">MVP LAB</span>
+              <span className="font-bold text-[24px] tracking-[-0.02em] uppercase">MVP LABS</span>
             </div>
             <p className="text-slate-500 max-w-xs text-[15px] leading-[1.6] mb-8">
               The next-generation venture studio for AI-powered applications. Powered by neural networks and decentralized growth models.
@@ -686,7 +689,7 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
         <div className="mt-[80px] pt-8 border-t border-white/5 text-center text-[11px] font-medium text-slate-600 tracking-[0.1em] uppercase">
-          © 2025 MVP LAB CORE. SECURED BY POLYGON & ETHEREUM.
+          © 2025 MVP LABS CORE. SECURED BY POLYGON & ETHEREUM.
         </div>
       </footer>
     </div >

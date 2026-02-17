@@ -14,7 +14,7 @@ const Team: React.FC = () => {
                         <div className="w-[40px] h-[40px] bg-white rounded-xl flex items-center justify-center shadow-lg shadow-white/5 transition-premium group-hover:scale-110 overflow-hidden p-1">
                             <img src="/logo.png" alt="MVP Lab Logo" className="w-full h-full object-contain" />
                         </div>
-                        <span className="font-bold text-[20px] tracking-[-0.02em] text-white">MVP LAB</span>
+                        <span className="font-bold text-[20px] tracking-[-0.02em] text-white">MVP LABS</span>
                     </div>
                     <button
                         onClick={() => navigate('/')}

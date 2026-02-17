@@ -110,3 +110,7 @@ const Academy: React.FC = () => {
                 </section>
             </div>
         </MobileLayout>
+    );
+};
+
+export default Academy;
