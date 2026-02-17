@@ -10,13 +10,13 @@ interface MobileLayoutProps {
 
 const MobileLayout: React.FC<MobileLayoutProps> = ({ children, activeTab = 'home', showNav = true }) => {
   return (
-    <div className="min-h-screen bg-background-dark flex justify-center overflow-x-hidden">
-      <div className="w-full max-w-md bg-[#0A0A0F] min-h-screen flex flex-col relative shadow-2xl">
+    <div className="min-h-screen bg-[#050505] flex justify-center overflow-x-hidden transition-premium">
+      <div className="w-full max-w-md bg-[#0A0A0F] min-h-screen flex flex-col relative shadow-[0_0_100px_rgba(0,0,0,0.5)] border-x border-white/5">
         {/* Glow Effects */}
-        <div className="absolute -top-24 -left-24 w-64 h-64 bg-primary opacity-10 blur-[100px] pointer-events-none"></div>
-        <div className="absolute top-1/2 -right-32 w-80 h-80 bg-secondary opacity-5 blur-[120px] pointer-events-none"></div>
-        
-        <main className="flex-1 overflow-y-auto no-scrollbar pb-24 relative z-10">
+        <div className="absolute top-[-120px] left-[-120px] w-80 h-80 bg-primary opacity-[0.08] blur-[120px] pointer-events-none rounded-full"></div>
+        <div className="absolute top-1/2 right-[-160px] w-[320px] h-[320px] bg-secondary opacity-[0.05] blur-[140px] pointer-events-none rounded-full"></div>
+
+        <main className="flex-1 overflow-y-auto no-scrollbar relative z-10 transition-premium">
           {children}
         </main>
 

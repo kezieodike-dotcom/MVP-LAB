@@ -18,18 +18,20 @@ const BottomNav: React.FC<BottomNavProps> = ({ activeTab }) => {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-background-dark/80 backdrop-blur-xl border-t border-white/5 px-6 pt-3 pb-8 flex justify-between items-center z-50">
+    <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[#0A0A0F]/90 backdrop-blur-2xl border-t border-white/5 px-[24px] pt-[16px] pb-[40px] flex justify-between items-center z-50 shadow-[0_-10px_40px_rgba(0,0,0,0.4)]">
       {navItems.map((item) => (
         <button
           key={item.id}
           onClick={() => item.path !== '#' && navigate(item.path)}
-          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === item.id ? 'text-primary' : 'text-slate-500'
+          className={`group flex flex-col items-center gap-1.5 transition-premium ${activeTab === item.id ? 'text-primary' : 'text-slate-500 hover:text-slate-300'
             }`}
         >
-          <span className={`material-symbols-outlined ${activeTab === item.id ? 'fill-[1]' : ''}`}>
-            {item.icon}
-          </span>
-          <span className="text-[10px] font-medium">{item.label}</span>
+          <div className={`p-2 rounded-xl transition-premium ${activeTab === item.id ? 'bg-primary/10' : 'group-hover:bg-white/5'}`}>
+            <span className={`material-symbols-outlined text-[24px] ${activeTab === item.id ? 'fill-[1]' : ''}`}>
+              {item.icon}
+            </span>
+          </div>
+          <span className="text-[10px] font-bold uppercase tracking-[0.05em]">{item.label}</span>
         </button>
       ))}
     </nav>

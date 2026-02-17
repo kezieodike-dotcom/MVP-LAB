@@ -10,43 +10,43 @@ const Dashboard: React.FC = () => {
     switch (role) {
       case UserRole.CLIENT:
         return (
-          <section className="space-y-8">
+          <section className="space-y-[32px]">
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-[10px] font-bold uppercase tracking-widest text-primary">Project Progress</h3>
-                <span className="text-[10px] text-slate-400 font-medium">MVP: AI Assistant</span>
+              <div className="flex items-center justify-between mb-4 px-1">
+                <h3 className="text-[11px] font-bold uppercase tracking-[0.08em] text-primary opacity-70">Project Progress</h3>
+                <span className="text-[11px] text-slate-500 font-bold uppercase tracking-[0.05em]">MVP: AI Assistant</span>
               </div>
-              <div className="glass p-6 rounded-3xl border-white/10">
-                <div className="flex items-center justify-between relative z-10 mb-6 font-bold">
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white ring-4 ring-primary/20">
-                      <span className="material-icons-round text-base">check</span>
+              <div className="glass p-[32px] rounded-[2.5rem] border-white/5 bg-gradient-to-br from-[#0A0A0F] to-primary/5 shadow-3xl">
+                <div className="flex items-center justify-between relative z-10 mb-[40px] font-bold">
+                  <div className="flex flex-col items-center gap-2.5">
+                    <div className="w-[40px] h-[40px] rounded-full bg-primary flex items-center justify-center text-white ring-8 ring-primary/10">
+                      <span className="material-symbols-outlined text-[20px]">check</span>
                     </div>
-                    <span className="text-[9px] text-primary">Idea</span>
+                    <span className="text-[10px] text-primary uppercase tracking-[0.08em]">Idea</span>
                   </div>
-                  <div className="h-0.5 flex-1 bg-primary mx-2"></div>
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white ring-4 ring-primary/20">
-                      <span className="material-icons-round text-base">rate_review</span>
+                  <div className="h-[2px] flex-1 bg-primary mx-4 opacity-30"></div>
+                  <div className="flex flex-col items-center gap-2.5">
+                    <div className="w-[40px] h-[40px] rounded-full bg-primary flex items-center justify-center text-white ring-8 ring-primary/10">
+                      <span className="material-symbols-outlined text-[20px]">rate_review</span>
                     </div>
-                    <span className="text-[9px] text-primary">Review</span>
+                    <span className="text-[10px] text-primary uppercase tracking-[0.08em]">Review</span>
                   </div>
-                  <div className="h-0.5 flex-1 bg-primary/30 mx-2"></div>
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center text-primary animate-pulse">
-                      <span className="material-icons-round text-base">code</span>
+                  <div className="h-[2px] flex-1 bg-white/5 mx-4"></div>
+                  <div className="flex flex-col items-center gap-2.5">
+                    <div className="w-[40px] h-[40px] rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center text-primary animate-pulse">
+                      <span className="material-symbols-outlined text-[20px]">code</span>
                     </div>
-                    <span className="text-[9px] text-slate-400">Dev</span>
+                    <span className="text-[10px] text-slate-500 uppercase tracking-[0.08em]">Dev</span>
                   </div>
                 </div>
-                <div className="bg-black/40 p-4 rounded-2xl border border-white/5 flex justify-between items-center">
+                <div className="bg-black/40 p-[24px] rounded-[1.5rem] border border-white/5 flex justify-between items-center">
                   <div>
-                    <p className="text-[9px] text-slate-500 uppercase font-bold mb-1">Status</p>
-                    <p className="text-sm font-bold">In Alpha Build</p>
+                    <p className="text-[10px] text-slate-500 uppercase font-bold tracking-[0.08em] mb-1 opacity-70">Status</p>
+                    <p className="text-[16px] font-bold text-white">In Alpha Build</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-[9px] text-slate-500 uppercase font-bold mb-1">Completion</p>
-                    <p className="text-sm font-bold text-primary">68%</p>
+                    <p className="text-[10px] text-slate-500 uppercase font-bold tracking-[0.08em] mb-1 opacity-70">Completion</p>
+                    <p className="text-[16px] font-bold text-primary">68%</p>
                   </div>
                 </div>
               </div>
@@ -55,20 +55,20 @@ const Dashboard: React.FC = () => {
         );
       case UserRole.DEVELOPER:
         return (
-          <section className="space-y-8">
+          <section className="space-y-[32px]">
             <div>
-              <h3 className="text-[10px] font-bold uppercase tracking-widest text-primary mb-4">Active Sprints</h3>
-              <div className="glass p-5 rounded-3xl border-white/5 space-y-4">
+              <h3 className="text-[11px] font-bold uppercase tracking-[0.08em] text-primary mb-4 px-1 opacity-70">Active Sprints</h3>
+              <div className="glass p-[24px] rounded-[2.5rem] border-white/5 space-y-4">
                 {[
                   { task: 'Neural Core Integration', priority: 'High', deadline: '2h' },
                   { task: 'Edge API Optimization', priority: 'Medium', deadline: '1d' }
                 ].map((t, i) => (
-                  <div key={i} className="flex justify-between items-center p-3 bg-white/5 rounded-2xl border border-white/5">
+                  <div key={i} className="flex justify-between items-center p-[20px] bg-white/5 rounded-[1.25rem] border border-white/5 group hover:border-white/10 transition-premium">
                     <div>
-                      <p className="text-xs font-bold">{t.task}</p>
-                      <p className="text-[9px] text-slate-500 uppercase font-bold mt-1">Due: {t.deadline}</p>
+                      <p className="text-[15px] font-bold text-white mb-1 group-hover:text-primary transition-colors">{t.task}</p>
+                      <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.08em]">Due: {t.deadline}</p>
                     </div>
-                    <span className={`px-2 py-0.5 rounded-full text-[8px] font-bold uppercase ${t.priority === 'High' ? 'bg-red-500/10 text-red-500' : 'bg-primary/10 text-primary'}`}>
+                    <span className={`px-[12px] py-[4px] rounded-full text-[10px] font-bold uppercase tracking-[0.05em] ${t.priority === 'High' ? 'bg-red-500/10 text-red-500 border border-red-500/20' : 'bg-primary/10 text-primary border border-primary/20'}`}>
                       {t.priority}
                     </span>
                   </div>
@@ -79,43 +79,45 @@ const Dashboard: React.FC = () => {
         );
       case UserRole.INVESTOR:
         return (
-          <section className="space-y-8">
+          <section className="space-y-[32px]">
             <div className="grid grid-cols-2 gap-4">
-              <div className="glass p-5 rounded-3xl border-l-4 border-l-secondary">
-                <p className="text-[10px] uppercase font-bold text-slate-500 mb-1">Total Funded</p>
-                <p className="text-xl font-bold font-mono">$124,500</p>
+              <div className="glass p-[24px] rounded-[2.5rem] border-white/5 bg-gradient-to-br from-[#0A0A0F] to-secondary/5 border-l-4 border-l-secondary">
+                <p className="text-[11px] uppercase font-bold text-slate-500 mb-2 tracking-[0.08em] opacity-70">Total Funded</p>
+                <p className="text-[24px] font-bold tracking-tight text-white">$124,500</p>
               </div>
-              <div className="glass p-5 rounded-3xl border-l-4 border-l-primary">
-                <p className="text-[10px] uppercase font-bold text-slate-500 mb-1">Est. ROI</p>
-                <p className="text-xl font-bold font-mono">18.2%</p>
+              <div className="glass p-[24px] rounded-[2.5rem] border-white/5 bg-gradient-to-br from-[#0A0A0F] to-primary/5 border-l-4 border-l-primary">
+                <p className="text-[11px] uppercase font-bold text-slate-500 mb-2 tracking-[0.08em] opacity-70">Est. ROI</p>
+                <p className="text-[24px] font-bold tracking-tight text-white">18.2%</p>
               </div>
             </div>
           </section>
         );
       case UserRole.CREATOR:
         return (
-          <section className="space-y-8">
-            <div className="glass p-6 rounded-3xl border-white/5 text-center">
-              <span className="material-symbols-outlined text-primary text-4xl mb-3">auto_videocam</span>
-              <h4 className="font-bold text-sm mb-2">Content Rewards</h4>
-              <p className="text-2xl font-bold font-mono text-secondary">$3,840.00</p>
-              <p className="text-[10px] text-slate-500 mt-2">Earned from 12 Campaigns</p>
+          <section className="space-y-[32px]">
+            <div className="glass p-[40px] rounded-[2.5rem] border-white/5 bg-gradient-to-br from-[#0A0A0F] to-secondary/5 text-center shadow-3xl">
+              <div className="w-[64px] h-[64px] rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-6 border border-primary/20">
+                <span className="material-symbols-outlined text-[32px]">auto_videocam</span>
+              </div>
+              <h4 className="font-bold text-[16px] text-slate-400 uppercase tracking-[0.08em] mb-2 opacity-70">Content Rewards</h4>
+              <p className="text-[40px] font-bold tracking-tighter text-white mb-2">$3,840.00</p>
+              <p className="text-[12px] text-slate-500 font-medium">Earned from 12 Verified Campaigns</p>
             </div>
           </section>
         );
       case UserRole.STUDENT:
         return (
-          <section className="space-y-8">
-            <div className="glass p-6 rounded-3xl border-white/5">
-              <h4 className="text-xs font-bold mb-4 uppercase tracking-widest text-slate-400">Current Course</h4>
-              <div className="flex gap-4 items-center">
-                <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
-                  <span className="material-symbols-outlined">data_object</span>
+          <section className="space-y-[32px]">
+            <div className="glass p-[32px] rounded-[2.5rem] border-white/5 bg-gradient-to-br from-[#0A0A0F] to-primary/5">
+              <h4 className="text-[11px] font-bold mb-[24px] uppercase tracking-[0.08em] text-slate-400 opacity-70">Current Course</h4>
+              <div className="flex gap-[20px] items-center">
+                <div className="w-[56px] h-[56px] rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shadow-lg shadow-primary/5">
+                  <span className="material-symbols-outlined text-[28px]">data_object</span>
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-bold">Neural Architecting</p>
-                  <div className="w-full h-1 bg-white/5 rounded-full mt-2">
-                    <div className="h-full bg-primary w-1/3"></div>
+                  <p className="text-[18px] font-bold text-white mb-3">Neural Architecting</p>
+                  <div className="w-full h-[6px] bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-full bg-primary w-[33%] transition-all duration-1000"></div>
                   </div>
                 </div>
               </div>
@@ -124,15 +126,15 @@ const Dashboard: React.FC = () => {
         );
       case UserRole.ADMIN:
         return (
-          <section className="space-y-8">
+          <section className="space-y-[32px]">
             <div className="grid grid-cols-2 gap-4">
-              <div className="glass p-5 rounded-3xl border-white/10 bg-red-500/5">
-                <p className="text-[9px] uppercase font-bold text-red-500/70 mb-1">System Alerts</p>
-                <p className="text-xl font-bold">2 Priority</p>
+              <div className="glass p-[24px] rounded-[2.5rem] border-white/5 bg-gradient-to-br from-[#0A0A0F] to-red-500/5">
+                <p className="text-[11px] uppercase font-bold text-red-500/70 mb-2 tracking-[0.08em]">System Alerts</p>
+                <p className="text-[24px] font-bold tracking-tight text-white">2 Priority</p>
               </div>
-              <div className="glass p-5 rounded-3xl border-white/10">
-                <p className="text-[9px] uppercase font-bold text-slate-500 mb-1">Queue Size</p>
-                <p className="text-xl font-bold">14 Apps</p>
+              <div className="glass p-[24px] rounded-[2.5rem] border-white/5 bg-gradient-to-br from-[#0A0A0F] to-white/5">
+                <p className="text-[11px] uppercase font-bold text-slate-500 mb-2 tracking-[0.08em] opacity-70">Queue Size</p>
+                <p className="text-[24px] font-bold tracking-tight text-white">14 Apps</p>
               </div>
             </div>
           </section>
@@ -144,35 +146,38 @@ const Dashboard: React.FC = () => {
 
   return (
     <MobileLayout activeTab="home">
-      <header className="px-6 pt-12 pb-4">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <button className="w-10 h-10 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5 text-slate-400">
-              <span className="material-symbols-outlined">menu</span>
+      <header className="px-[32px] pt-[48px] pb-4">
+        <div className="flex items-center justify-between mb-[40px]">
+          <div className="flex items-center gap-[16px]">
+            <button className="w-[48px] h-[48px] flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-premium">
+              <span className="material-symbols-outlined text-[20px]">menu</span>
             </button>
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold overflow-hidden border border-white/10">
-              <img
-                alt="Profile"
-                className="w-full h-full object-cover"
-                src="https://picsum.photos/seed/user1/100/100"
-              />
+            <div className="w-[48px] h-[48px] rounded-full bg-gradient-to-br from-primary to-secondary p-[2px] transition-premium hover:scale-110 cursor-pointer">
+              <div className="w-full h-full rounded-full overflow-hidden border-2 border-[#0A0A0F]">
+                <img
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                  src="https://picsum.photos/seed/user1/100/100"
+                />
+              </div>
             </div>
             <div>
-              <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Welcome,</p>
-              <h2 className="text-lg font-bold">Sterling</h2>
+              <p className="text-[11px] text-slate-500 font-bold uppercase tracking-[0.08em] opacity-70">Welcome back,</p>
+              <h2 className="text-[20px] font-bold text-white tracking-tight">Sterling</h2>
             </div>
           </div>
-          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/5">
-            <span className="material-icons-round text-xl">notifications</span>
+          <button className="w-[48px] h-[48px] flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-premium relative">
+            <span className="material-symbols-outlined text-[20px]">notifications</span>
+            <span className="absolute top-3.5 right-3.5 w-2 h-2 rounded-full bg-primary ring-2 ring-[#0A0A0F]"></span>
           </button>
         </div>
 
-        <div className="flex gap-2 p-1 bg-white/5 rounded-2xl border border-white/5 overflow-x-auto no-scrollbar">
+        <div className="flex gap-[12px] p-1.5 bg-white/5 rounded-2xl border border-white/10 overflow-x-auto no-scrollbar -mx-[32px] px-[32px]">
           {Object.values(UserRole).map((r) => (
             <button
               key={r}
               onClick={() => setRole(r)}
-              className={`flex-shrink-0 py-2.5 px-4 text-[10px] font-bold rounded-xl transition-all ${role === r ? 'bg-primary text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'
+              className={`flex-shrink-0 h-[40px] px-6 text-[12px] font-bold rounded-xl transition-premium ${role === r ? 'bg-primary text-white shadow-lg shadow-primary/20' : 'text-slate-500 hover:text-white'
                 }`}
             >
               {r.charAt(0) + r.slice(1).toLowerCase()}
@@ -181,21 +186,21 @@ const Dashboard: React.FC = () => {
         </div>
       </header>
 
-      <div className="px-6 pb-24 mt-4">
+      <div className="px-[32px] pb-[120px] mt-[32px]">
         {renderRoleContent()}
 
-        <h3 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mt-12 mb-4">Quick Insights</h3>
+        <h3 className="text-[11px] font-bold uppercase tracking-[0.08em] text-slate-500 mt-[48px] mb-6 opacity-70 px-1">Quick Insights</h3>
         <div className="grid grid-cols-2 gap-4">
-          <div className="glass p-5 rounded-3xl border-white/5">
-            <p className="text-[10px] uppercase font-bold text-slate-600 mb-1">Ecosystem Status</p>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-              <span className="text-xs font-bold uppercase">Optimal</span>
+          <div className="glass p-[24px] rounded-[2rem] border-white/5 bg-gradient-to-br from-[#0A0A0F] to-white/[0.02]">
+            <p className="text-[10px] uppercase font-bold text-slate-600 mb-3 tracking-[0.08em]">System Status</p>
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse shadow-[0_0_10px_rgba(0,255,160,0.5)]"></span>
+              <span className="text-[12px] font-bold uppercase tracking-[0.05em] text-white">Optimal</span>
             </div>
           </div>
-          <div className="glass p-5 rounded-3xl border-white/5">
-            <p className="text-[10px] uppercase font-bold text-slate-600 mb-1">Active AI Nodes</p>
-            <p className="text-sm font-bold font-mono">1,024</p>
+          <div className="glass p-[24px] rounded-[2rem] border-white/5 bg-gradient-to-br from-[#0A0A0F] to-white/[0.02]">
+            <p className="text-[10px] uppercase font-bold text-slate-600 mb-3 tracking-[0.08em]">Active AI Nodes</p>
+            <p className="text-[16px] font-bold text-white font-mono">1,024</p>
           </div>
         </div>
       </div>
